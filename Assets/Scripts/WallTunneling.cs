@@ -24,6 +24,7 @@ public class WallTunneling : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                isCrossing = true;
                 GetComponent<PlayerController>().enabled = false;
                 StartCoroutine(animationCrossWall());
             }
@@ -61,6 +62,7 @@ public class WallTunneling : MonoBehaviour
         rbPlayer.AddForce(transform.forward * 700);
         yield return new WaitForSeconds(0.5f);
 
+        isCrossing = false;
         wall.GetComponent<MeshCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
     }
