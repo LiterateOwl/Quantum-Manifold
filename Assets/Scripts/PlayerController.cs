@@ -35,23 +35,18 @@ public class PlayerController : MonoBehaviour
 
     public void Split() 
     {
-        Debug.Log("split!");
         GetComponent<MeshRenderer>().enabled = true;
         if (!isItSplit)
         {
-            Debug.Log("player was not split before " + ((isTheCopy) ? "copy" : ""));
             isItSplit = true;
             if (!isTheCopy) cam.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
             else cam.GetComponent<Camera>().rect = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
-            Debug.Log(cam.GetComponent<Camera>().rect + ((isTheCopy) ? " copy" : ""));
         }
         else
         {
-            Debug.Log("player already split " + ((isTheCopy)?"copy":""));
             if (isTheCopy) Destroy(gameObject);
             isItSplit = false;
             cam.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
-            Debug.Log(cam.GetComponent<Camera>().rect + ((isTheCopy) ? " copy" : ""));
         }
     }
 
@@ -93,7 +88,7 @@ public class PlayerController : MonoBehaviour
                         grabbedObject.transform.SetParent(cam.transform);
                         grabbing = true;
                     }
-                    else if (hit.collider.gameObject.GetComponent<PlayerSplitter>()) 
+                    else if (hit.collider.gameObject.GetComponent<PlayerSplitter>() && !isItSplit) 
                     {
                         GameObject copy = Instantiate(playerPrefab, hit.collider.gameObject.GetComponent<PlayerSplitter>().copySpawnPosition, transform.rotation);
                         copy.transform.GetChild(0).transform.rotation = cam.transform.rotation;
