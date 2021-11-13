@@ -14,6 +14,7 @@ public class EnterQuantumWorld : MonoBehaviour
     private bool isNearQuantumCube;
     private bool animazioneVersoEntrata;
     private bool startFade;
+    private bool dissolveFade;
 
     private void Awake()
     {
@@ -33,14 +34,17 @@ public class EnterQuantumWorld : MonoBehaviour
                 StartCoroutine(startFadeRetard());
             }
         }
-        if (startFade)
-            fade.CrossFadeAlpha(1, 5, false);
     }
 
     void FixedUpdate()
     {
-        if (animazioneVersoEntrata)
-            cam.transform.position = Vector3.MoveTowards(cam.transform.position, entrataMondoQuantico.transform.position, 0.005f);
+        //if (animazioneVersoEntrata) Debug.Log("lol");
+        //cam.transform.position = Vector3.MoveTowards(cam.transform.position, entrataMondoQuantico.transform.position, 0.005f);
+
+        if (startFade)
+            fade.CrossFadeAlpha(1, 3, false);
+        else if (dissolveFade)
+            fade.CrossFadeAlpha(0, 5, false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,9 +68,18 @@ public class EnterQuantumWorld : MonoBehaviour
 
     IEnumerator startFadeRetard()
     {
-        yield return new WaitForSeconds(1);
         startFade = true;
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
+        startFade = false;
+        transform.position = GameObject.Find("StartingPoint").transform.position;
+        //cam.transform.position = new Vector3(0, 0.5f, 0);
         quantManager.ToggleQuantum();
+        yield return new WaitForSeconds(0.5f);
+        dissolveFade = true;
+        //animazioneVersoEntrata = false;
+        yield return new WaitForSeconds(3f);
+        GetComponent<PlayerController>().enabled = true;
+        yield return new WaitForSeconds(3.1f);
+        dissolveFade = false;
     }
 }
