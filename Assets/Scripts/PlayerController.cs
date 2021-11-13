@@ -101,6 +101,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && onGround)
+        {
+            onGround = false;
+            rb.AddForce(Vector3.up * jumpForce);
+        }
     }
 
     void FixedUpdate()
@@ -112,13 +118,8 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, xRotate, 0.0f);
 
         rb.velocity = Vector3.Project(rb.velocity, Vector3.up) + Input.GetAxis("Horizontal") * speed * transform.right + Input.GetAxis("Vertical") * speed * transform.forward;
-        if (Input.GetKeyDown(KeyCode.Space) && onGround)
-        {
-            onGround = false;
-            rb.AddForce(Vector3.up * jumpForce);
-        }
     }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (Physics.Raycast(transform.position, Vector3.down, 1.2f))
