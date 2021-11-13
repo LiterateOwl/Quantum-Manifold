@@ -22,15 +22,13 @@ public class PlayerController : MonoBehaviour
     private bool grabbing;
     private bool onGround;
     private bool tryingToTunnel;
-
-    private float Tunneltime;
-    private float tunnelStartTime;
-
-    private GameObject tunneledObject;
+    private bool b;
 
     private GameObject grabbedObject;
 
     private Rigidbody rb;
+    public void SetTryingToTunnel(bool value) { tryingToTunnel = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,42 +36,42 @@ public class PlayerController : MonoBehaviour
         grabbing = false;
         onGround = true;
         tryingToTunnel = false;
+        b = false;
     }
 
     // Update is called once per frame
-
     private void Update()
     {
-        if (tryingToTunnel && ) 
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (!tryingToTunnel)
         {
-            if (grabbing)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                grabbedObject.transform.SetParent(null);
-                grabbing = false;
-            }
-            else
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, grabRange))
+                if (grabbing)
                 {
-                    if (hit.collider.gameObject.GetComponent<QuantumManager>())
+                    grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    grabbedObject.transform.SetParent(null);
+                    grabbing = false;
+                }
+                else
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, grabRange))
                     {
-                        hit.collider.gameObject.GetComponent<QuantumManager>().ToggleQuantum();
-                    }
-                    else if (hit.collider.gameObject.GetComponent<Rigidbody>())
-                    {
-                        grabbedObject = hit.collider.gameObject;
-                        grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-                        grabbedObject.transform.SetParent(cam.transform);
-                        grabbing = true;
-                    }
-                    else if (qm.GetQuantum() && !tryingToTunnel)
-                    {
-                        tryingToTunnel = true;
-                        Tunneltime = Random.Range(tunnelTimeMin, tunnelTimeMax);
-                        tunnelStartTime = Time.time;
+                        if (/*(hit.collider.gameObject.GetComponent<WallTunnelling>()*/b && qm.GetQuantum()) )
+                        {
+                            tryingToTunnel = true;
+                        }
+                        else if (hit.collider.gameObject.GetComponent<QuantumManager>())
+                        {
+                            hit.collider.gameObject.GetComponent<QuantumManager>().ToggleQuantum();
+                        }
+                        else if (hit.collider.gameObject.GetComponent<Rigidbody>())
+                        {
+                            grabbedObject = hit.collider.gameObject;
+                            grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                            grabbedObject.transform.SetParent(cam.transform);
+                            grabbing = true;
+                        }
                     }
                 }
             }
