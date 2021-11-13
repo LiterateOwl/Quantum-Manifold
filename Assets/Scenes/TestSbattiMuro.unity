@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: textCanvas
       value: 
       objectReference: {fileID: 1031202246}
+    - target: {fileID: 1915861667375044786, guid: 764959833550f8848bcc5a389ff06647, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1915861667814306795, guid: 764959833550f8848bcc5a389ff06647, type: 3}
       propertyPath: quantumManager
       value: 
