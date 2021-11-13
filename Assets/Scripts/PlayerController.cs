@@ -80,11 +80,7 @@ public class PlayerController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, grabRange))
                 {
-                    if (hit.collider.gameObject.GetComponent<QuantumManager>())
-                    {
-                        hit.collider.gameObject.GetComponent<QuantumManager>().ToggleQuantum();
-                    }
-                    else if (hit.collider.gameObject.GetComponent<Rigidbody>())
+                    if (hit.collider.gameObject.GetComponent<Rigidbody>())
                     {
                         grabbedObject = hit.collider.gameObject;
                         grabbedObject.GetComponent<Rigidbody>().isKinematic = true;

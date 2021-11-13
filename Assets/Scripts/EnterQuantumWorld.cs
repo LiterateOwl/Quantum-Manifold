@@ -10,6 +10,7 @@ public class EnterQuantumWorld : MonoBehaviour
     public GameObject entrataMondoQuantico;
     public GameObject cam;
     public Image fade;
+    public QuantumManager quantManager;
     private bool isNearQuantumCube;
     private bool animazioneVersoEntrata;
     private bool startFade;
@@ -65,5 +66,7 @@ public class EnterQuantumWorld : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         startFade = true;
+        yield return new WaitForSeconds(2.5f);
+        quantManager.ToggleQuantum();
     }
 }
