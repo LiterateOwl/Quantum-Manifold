@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         yRotate += Input.GetAxis("Mouse Y") * mouseSensY;
         xRotate += Input.GetAxis("Mouse X") * mouseSensX;
         yRotate = Mathf.Clamp(yRotate, -60, 50);
-        cam.transform.eulerAngles = new Vector3(yRotate, xRotate, 0.0f);
+        cam.transform.eulerAngles = new Vector3(yRotate, cam.transform.eulerAngles.y, 0.0f);
         transform.eulerAngles = new Vector3(0.0f, xRotate, 0.0f);
 
         rb.velocity = Vector3.Project(rb.velocity, Vector3.up) + Input.GetAxis("Horizontal") * speed * transform.right + Input.GetAxis("Vertical") * speed * transform.forward;
