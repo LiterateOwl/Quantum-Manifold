@@ -8,7 +8,7 @@ public class WallTunneling : MonoBehaviour
 {
     public TextMeshProUGUI textCanvas;
     private GameObject wall;
-    private bool isCrossing;
+    private bool isNearGlass;
     private Rigidbody rbPlayer;
 
     private void Awake()
@@ -20,11 +20,11 @@ public class WallTunneling : MonoBehaviour
 
     void Update()
     {
-        if (textCanvas.gameObject.activeInHierarchy == true && !isCrossing)
+        if (isNearGlass)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                isCrossing = true;
+                isNearGlass = false;
                 GetComponent<PlayerController>().enabled = false;
                 StartCoroutine(animationCrossWall());
             }
@@ -35,6 +35,7 @@ public class WallTunneling : MonoBehaviour
     {
         if (other.tag == "Glass")
         {
+            isNearGlass = true;
             textCanvas.gameObject.SetActive(true);
             textCanvas.text = "Press E to try to cross the wall";
         }
@@ -44,6 +45,7 @@ public class WallTunneling : MonoBehaviour
     {
         if (other.tag == "Glass")
         {
+            isNearGlass = false;
             textCanvas.gameObject.SetActive(false);
         }
     }
@@ -62,7 +64,6 @@ public class WallTunneling : MonoBehaviour
         rbPlayer.AddForce(transform.forward * 700);
         yield return new WaitForSeconds(0.5f);
 
-        isCrossing = false;
         wall.GetComponent<MeshCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
     }
