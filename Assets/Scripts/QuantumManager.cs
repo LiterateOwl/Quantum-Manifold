@@ -33,6 +33,7 @@ public class QuantumManager : MonoBehaviour
     void Start()
     {
         quantum = false;
+        quantumMaterial.mainTexture = classicTex;
     }
 
     // Update is called once per frame
