@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private QuantumManager qm;
 
+    private float yRotate = 0;
+    private float xRotate = 0;
+
     public bool GetIsTheCopy() { return isTheCopy; }
 
     public void SetIsTheCopy(bool value) { isTheCopy = value; }
@@ -106,8 +109,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * mouseSensX, 0.0f);
-        cam.transform.Rotate(Input.GetAxis("Mouse Y") * mouseSensY, 0.0f, 0.0f);
+        yRotate += Input.GetAxis("Mouse Y") * mouseSensY;
+        xRotate += Input.GetAxis("Mouse X") * mouseSensX;
+        yRotate = Mathf.Clamp(yRotate, -60, 50);
+        cam.transform.eulerAngles = new Vector3(yRotate, xRotate, 0.0f);
+        transform.eulerAngles = new Vector3(0.0f, xRotate, 0.0f);
+
         rb.velocity = Vector3.Project(rb.velocity, Vector3.up) + Input.GetAxis("Horizontal") * speed * transform.right + Input.GetAxis("Vertical") * speed * transform.forward;
         if (Input.GetKeyDown(KeyCode.Space) && onGround)
         {
