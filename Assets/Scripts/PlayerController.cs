@@ -39,15 +39,19 @@ public class PlayerController : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = true;
         if (!isItSplit)
         {
+            Debug.Log("player was not split before " + ((isTheCopy) ? "copy" : ""));
             isItSplit = true;
-            if (!isTheCopy) cam.GetComponent<Camera>().rect.Set(0.0f, 0.0f, 0.5f, 1.0f);
-            else cam.GetComponent<Camera>().rect.Set(0.5f, 0.0f, 0.5f, 1.0f);
+            if (!isTheCopy) cam.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
+            else cam.GetComponent<Camera>().rect = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
+            Debug.Log(cam.GetComponent<Camera>().rect + ((isTheCopy) ? " copy" : ""));
         }
         else
         {
+            Debug.Log("player already split " + ((isTheCopy)?"copy":""));
             if (isTheCopy) Destroy(gameObject);
             isItSplit = false;
-            cam.GetComponent<Camera>().rect.Set(0.0f, 0.0f, 1.0f, 1.0f);
+            cam.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
+            Debug.Log(cam.GetComponent<Camera>().rect + ((isTheCopy) ? " copy" : ""));
         }
     }
 
