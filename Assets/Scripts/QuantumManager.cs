@@ -9,6 +9,8 @@ public class QuantumManager : MonoBehaviour
     public Material quantumMaterial;
     public Material classicGlass;
     public Material quantumGlass;
+    public Material classicSky;
+    public Material quantumSky;
     public Texture classicTex;
     public Texture quantumTex;
 
@@ -26,6 +28,7 @@ public class QuantumManager : MonoBehaviour
         quantum = !quantum;
         SwitchTextures();
         SwitchMaterials();
+        SwitchSkyBox();
         return quantum;
     }
 
@@ -56,5 +59,10 @@ public class QuantumManager : MonoBehaviour
         {
             glassWalls[i].GetComponent<MeshRenderer>().material = (quantum) ? quantumGlass : classicGlass;
         }
+    }
+
+    void SwitchSkyBox()
+    {
+        RenderSettings.skybox = (quantum) ? quantumSky : classicSky;
     }
 }
