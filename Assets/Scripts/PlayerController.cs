@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, grabRange))
                     {
-                        if (/*(hit.collider.gameObject.GetComponent<WallTunnelling>()*/b && qm.GetQuantum()) )
+                        if (/*(hit.collider.gameObject.GetComponent<WallTunnelling>()*/b && qm.GetQuantum())
                         {
                             tryingToTunnel = true;
                         }
