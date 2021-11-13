@@ -12,6 +12,7 @@ public class EnterQuantumWorld : MonoBehaviour
     public Image fade;
     public QuantumManager quantManager;
     private bool isNearQuantumCube;
+    private bool isNearGate;
     private bool animazioneVersoEntrata;
     private bool startFade;
     private bool dissolveFade;
@@ -23,7 +24,7 @@ public class EnterQuantumWorld : MonoBehaviour
 
     void Update()
     {
-        if (isNearQuantumCube)
+        if ((isNearQuantumCube && !quantManager.GetQuantum()) || (isNearGate && quantManager.GetQuantum()))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -55,6 +56,12 @@ public class EnterQuantumWorld : MonoBehaviour
             textCanvas.gameObject.SetActive(true);
             textCanvas.text = "Press E to go into the quantum world";
         }
+        else if (other.tag == "Gate")
+        {
+            isNearGate = true;
+            textCanvas.gameObject.SetActive(true);
+            textCanvas.text = "Press E to exit the quantum world";
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -62,6 +69,11 @@ public class EnterQuantumWorld : MonoBehaviour
         if (other.tag == "QuantumCube")
         {
             isNearQuantumCube = false;
+            textCanvas.gameObject.SetActive(false);
+        }
+        else if (other.tag == "Gate")
+        {
+            isNearGate = false;
             textCanvas.gameObject.SetActive(false);
         }
     }
@@ -74,6 +86,7 @@ public class EnterQuantumWorld : MonoBehaviour
         transform.position = GameObject.Find("StartingPoint").transform.position;
         //cam.transform.position = new Vector3(0, 0.5f, 0);
         quantManager.ToggleQuantum();
+        Debug.Log(quantManager.GetQuantum());
         yield return new WaitForSeconds(0.5f);
         dissolveFade = true;
         //animazioneVersoEntrata = false;

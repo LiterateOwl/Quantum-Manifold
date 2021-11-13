@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Glass
   - QuantumCube
+  - Gate
   layers:
   - Default
   - TransparentFX
