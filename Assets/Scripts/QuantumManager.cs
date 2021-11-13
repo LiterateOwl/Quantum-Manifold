@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuantumManager : MonoBehaviour
 {
-
+    public Vector2 textureScroll;
 
     public Material quantumMaterial;
     public Material classicGlass;
@@ -38,7 +38,10 @@ public class QuantumManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (quantum)
+        {
+            quantumMaterial.mainTextureOffset += textureScroll * Time.deltaTime;
+        }
     }
 
     void SwitchTextures()
