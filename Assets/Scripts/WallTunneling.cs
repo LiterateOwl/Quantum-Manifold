@@ -7,20 +7,24 @@ using TMPro;
 public class WallTunneling : MonoBehaviour
 {
     public TextMeshProUGUI textCanvas;
+    public GameObject quantumManager;
     private GameObject wall;
     private bool isNearGlass;
     private Rigidbody rbPlayer;
+    private QuantumManager qm;
+
 
     private void Awake()
     {
         rbPlayer = GetComponent<Rigidbody>();
+        qm = quantumManager.GetComponent<QuantumManager>();
         wall = GameObject.FindGameObjectWithTag("Glass");
     }
 
 
     void Update()
     {
-        if (isNearGlass)
+        if (isNearGlass && qm.GetQuantum())
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -33,7 +37,7 @@ public class WallTunneling : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Glass")
+        if (other.tag == "Glass" && qm.GetQuantum())
         {
             isNearGlass = true;
             textCanvas.gameObject.SetActive(true);

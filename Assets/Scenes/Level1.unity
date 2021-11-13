@@ -1779,7 +1779,7 @@ MonoBehaviour:
   tunnelTimeMax: 0
   tunnelTimeMin: 0
   cam: {fileID: 1915861667441841055}
-  quantumManager: {fileID: 0}
+  quantumManager: {fileID: 886594471}
   playerPrefab: {fileID: 1915861667814306801, guid: 764959833550f8848bcc5a389ff06647, type: 3}
 --- !u!54 &1915861667747346627
 Rigidbody:

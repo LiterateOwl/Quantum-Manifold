@@ -50,13 +50,14 @@ public class EnterQuantumWorld : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "QuantumCube")
+
+        if (other.tag == "QuantumCube" && !quantManager.GetQuantum())
         {
             isNearQuantumCube = true;
             textCanvas.gameObject.SetActive(true);
             textCanvas.text = "Press E to go into the quantum world";
         }
-        else if (other.tag == "Gate")
+        else if (other.tag == "Gate" && quantManager.GetQuantum())
         {
             isNearGate = true;
             textCanvas.gameObject.SetActive(true);
