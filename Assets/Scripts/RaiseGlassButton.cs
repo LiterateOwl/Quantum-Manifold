@@ -30,14 +30,20 @@ public class RaiseGlassButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Button") playerInRange = true;
-        textCanvas.gameObject.SetActive(true);
-        textCanvas.text = "Press E to open glass wall";
+        if (other.tag == "Button")
+        {
+            playerInRange = true;
+            textCanvas.gameObject.SetActive(true);
+            textCanvas.text = "Press E to open glass wall";
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Button") playerInRange = false;
-        textCanvas.gameObject.SetActive(false);
+        if (other.tag == "Button")
+        {
+            playerInRange = false;
+            textCanvas.gameObject.SetActive(false);
+        }
     }
 }
