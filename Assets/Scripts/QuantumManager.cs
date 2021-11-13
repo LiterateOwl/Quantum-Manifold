@@ -7,8 +7,12 @@ public class QuantumManager : MonoBehaviour
 
 
     public Material quantumMaterial;
+    public Material classicGlass;
+    public Material quantumGlass;
     public Texture classicTex;
     public Texture quantumTex;
+
+    public GameObject[] glassWalls;
     
     private bool quantum;
 
@@ -21,6 +25,7 @@ public class QuantumManager : MonoBehaviour
     {
         quantum = !quantum;
         SwitchTextures();
+        SwitchMaterials();
         return quantum;
     }
 
@@ -39,5 +44,13 @@ public class QuantumManager : MonoBehaviour
     void SwitchTextures()
     {
         quantumMaterial.mainTexture = (quantum) ? quantumTex : classicTex;
+    }
+
+    void SwitchMaterials()
+    {
+        for (int i = 0; i < glassWalls.Length; i++)
+        {
+            glassWalls[i].GetComponent<MeshRenderer>().material = (quantum) ? quantumGlass : classicGlass;
+        }
     }
 }
