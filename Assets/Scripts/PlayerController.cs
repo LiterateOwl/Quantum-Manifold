@@ -106,8 +106,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * mouseSensX, 0.0f);
+        if (cam.transform.rotation.eulerAngles.x + Input.GetAxis("Mouse Y") > 89) cam.transform.localRotation = Quaternion.Euler(89.0f, 0.0f, 0.0f);
+        if (cam.transform.rotation.eulerAngles.x + Input.GetAxis("Mouse Y") < -89) cam.transform.localRotation = Quaternion.Euler(-89.0f, 0.0f, 0.0f);
         cam.transform.Rotate(Input.GetAxis("Mouse Y") * mouseSensY, 0.0f, 0.0f);
+        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * mouseSensX, 0.0f);
         rb.velocity = Vector3.Project(rb.velocity, Vector3.up) + Input.GetAxis("Horizontal") * speed * transform.right + Input.GetAxis("Vertical") * speed * transform.forward;
         if (Input.GetKeyDown(KeyCode.Space) && onGround)
         {
