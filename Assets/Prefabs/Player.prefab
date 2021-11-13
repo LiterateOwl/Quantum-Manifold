@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1915861667814306794}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textCanvas: {fileID: 0}
+  quantumManager: {fileID: 0}
 --- !u!54 &1915861667814306794
 Rigidbody:
   m_ObjectHideFlags: 0
