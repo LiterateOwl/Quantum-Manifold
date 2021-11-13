@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
     public float tunnelTimeMin;
 
     public GameObject cam;
-
-    public QuantumManager qm;
+    public GameObject quantumManager;
 
     private bool grabbing;
     private bool onGround;
@@ -27,12 +26,15 @@ public class PlayerController : MonoBehaviour
     private GameObject grabbedObject;
 
     private Rigidbody rb;
+    private QuantumManager qm;
     public void SetTryingToTunnel(bool value) { tryingToTunnel = value; }
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        qm = quantumManager.GetComponent<QuantumManager>();
+
         grabbing = false;
         onGround = true;
         tryingToTunnel = false;
