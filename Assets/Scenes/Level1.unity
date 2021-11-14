@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a368994b29b654bb9642058d980d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Level 2
+  nextScene: Level2
   textCanvas: {fileID: 700904467}
   quantumManager: {fileID: 886594471}
 --- !u!114 &6689765527030545783
