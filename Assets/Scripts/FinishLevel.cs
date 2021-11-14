@@ -26,7 +26,7 @@ public class FinishLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((isNearGate && !qm.GetQuantum()))
+        if (isNearGate && !qm.GetQuantum())
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

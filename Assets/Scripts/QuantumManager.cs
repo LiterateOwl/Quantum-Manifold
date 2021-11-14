@@ -14,6 +14,7 @@ public class QuantumManager : MonoBehaviour
     public Texture classicTex;
     public Texture quantumTex;
 
+    public GameObject player;
     public GameObject[] glassWalls;
     public GameObject[] movableObjects; 
 
@@ -37,6 +38,11 @@ public class QuantumManager : MonoBehaviour
         SwitchTextures();
         SwitchMaterials();
         SwitchSkyBox();
+        if (!quantum && player.GetComponent<PlayerController>().isItSplit)
+        {
+            player.GetComponent<PlayerController>().copy.GetComponent<PlayerController>().Split();
+            player.GetComponent<PlayerController>().Split();
+        }
         return quantum;
     }
 

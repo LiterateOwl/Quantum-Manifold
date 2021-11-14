@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     public GameObject quantumManager;
     public GameObject playerPrefab;
 
+    public GameObject copy;
+
     private bool grabbing;
     private bool onGround;
-    private bool isItSplit;
+    public bool isItSplit;
     private bool isTheCopy;
 
     private GameObject grabbedObject;
@@ -36,16 +38,19 @@ public class PlayerController : MonoBehaviour
 
     public void SetIsTheCopy(bool value) { isTheCopy = value; }
 
+    public void SetIsItSplit(bool value) { isItSplit = value; }
+
     public void Split() 
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        Debug.Log("isItSplit = " + isItSplit);
+        GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
         if (!isItSplit)
         {
             isItSplit = true;
             if (!isTheCopy) cam.GetComponent<Camera>().rect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
             else cam.GetComponent<Camera>().rect = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
         }
-        else
+        else if (isItSplit)
         {
             if (isTheCopy) Destroy(gameObject);
             isItSplit = false;
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         qm = quantumManager.GetComponent<QuantumManager>();
+        qm.player = gameObject;
 
         grabbing = false;
         onGround = true;
@@ -88,17 +94,32 @@ public class PlayerController : MonoBehaviour
                         grabbedObject.transform.SetParent(cam.transform);
                         grabbing = true;
                     }
-                    else if (hit.collider.gameObject.GetComponent<PlayerSplitter>() && !isItSplit) 
+                    else if (hit.collider.gameObject.GetComponent<PlayerSplitter>() && !isItSplit && quantumManager.GetComponent<QuantumManager>().GetQuantum())
                     {
-                        GameObject copy = Instantiate(playerPrefab, hit.collider.gameObject.GetComponent<PlayerSplitter>().copySpawnPosition, transform.rotation);
+                        copy = Instantiate(playerPrefab, hit.collider.gameObject.GetComponent<PlayerSplitter>().copySpawnPosition, transform.rotation);
                         copy.transform.GetChild(0).transform.rotation = cam.transform.rotation;
                         copy.transform.GetChild(0).GetComponent<AudioListener>().enabled = false;
-                        copy.GetComponent<WallTunneling>().textCanvas = GetComponent<WallTunneling>().textCanvas;
+                        if (GetComponent<WallTunneling>())
+                        {
+                            if (!copy.GetComponent<WallTunneling>()) copy.AddComponent<WallTunneling>();
+                            copy.GetComponent<WallTunneling>().textCanvas = GetComponent<WallTunneling>().textCanvas;
+                            copy.GetComponent<WallTunneling>().quantumManager = GetComponent<WallTunneling>().quantumManager;
+                        }
+                        if (GetComponent<PressMultiButton>())
+                        {
+                            if (!copy.GetComponent<PressMultiButton>()) copy.AddComponent<PressMultiButton>();
+                            copy.GetComponent<PressMultiButton>().textCanvas = GetComponent<PressMultiButton>().textCanvas;
+                        }
                         copy.GetComponent<PlayerController>().quantumManager = quantumManager;
                         copy.GetComponent<PlayerController>().SetIsTheCopy(true);
+                        copy.GetComponent<PlayerController>().copy = gameObject;
+                        copy.GetComponent<PlayerController>().SetIsItSplit(false);
                         copy.GetComponent<PlayerController>().Split();
                         Split();
+                        copy.GetComponent<PlayerController>().SetIsItSplit(true);
+                        isItSplit = true;
                     }
+                    else if (hit.collider.gameObject.GetComponent<MultiButton>()) hit.collider.gameObject.GetComponent<MultiButton>().button = true;
                 }
             }
         }
