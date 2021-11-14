@@ -1545,7 +1545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886594471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 0.5, z: -1}
+  m_LocalPosition: {x: 2.144, y: 0.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 456604157}
@@ -1572,7 +1572,7 @@ MonoBehaviour:
   quantumSky: {fileID: 2100000, guid: ac2151ef4d19745419e9a4f2f60abd48, type: 2}
   classicTex: {fileID: 2800000, guid: 7a4a4d3b7ff17f145bd3326559e58175, type: 3}
   quantumTex: {fileID: 2800000, guid: 398726ee548c1e945bc0d44523d9544d, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 1915861667747346648}
   glassWalls:
   - {fileID: 1317157853}
   movableObjects: []
@@ -2846,6 +2846,7 @@ MonoBehaviour:
   quantumManager: {fileID: 886594471}
   playerPrefab: {fileID: 1915861667814306801, guid: 764959833550f8848bcc5a389ff06647, type: 3}
   copy: {fileID: 0}
+  isItSplit: 0
 --- !u!54 &1915861667747346627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3004,6 +3005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a368994b29b654bb9642058d980d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 
+  nextScene: Level4
   textCanvas: {fileID: 700904467}
   quantumManager: {fileID: 886594471}
