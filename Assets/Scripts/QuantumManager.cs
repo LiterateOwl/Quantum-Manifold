@@ -15,6 +15,7 @@ public class QuantumManager : MonoBehaviour
     public Texture quantumTex;
 
     public GameObject[] glassWalls;
+    public GameObject[] movableObjects; 
 
     public GameObject occhio;
     public GameObject vfx;
@@ -71,5 +72,13 @@ public class QuantumManager : MonoBehaviour
     void SwitchSkyBox()
     {
         RenderSettings.skybox = (quantum) ? quantumSky : classicSky;
+    }
+
+    void ToggleKinematicMovableObjects()
+    {
+        for (int i = 0; i < movableObjects.Length; i++)
+        {
+            glassWalls[i].GetComponent<Rigidbody>().isKinematic = (quantum) ? true : false;
+        }
     }
 }

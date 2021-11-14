@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
         {
             if (grabbing)
             {
-                //grabbedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 grabbedObject.transform.SetParent(null);
                 grabbing = false;

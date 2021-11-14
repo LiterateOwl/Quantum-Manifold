@@ -70,7 +70,8 @@ public class EnterQuantumWorld : MonoBehaviour
         if (other.tag == "QuantumCube")
         {
             isNearQuantumCube = false;
-            textCanvas.gameObject.SetActive(false);
+            if (!quantManager.GetQuantum()) textCanvas.gameObject.SetActive(false);
+            else textCanvas.text = "Reach a gate to exit the quantum world";
         }
         else if (other.tag == "Gate")
         {
