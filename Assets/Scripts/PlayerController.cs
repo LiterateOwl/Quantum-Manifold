@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             if (grabbing)
             {
+                //grabbedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 grabbedObject.transform.SetParent(null);
                 grabbing = false;
@@ -80,9 +81,10 @@ public class PlayerController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, grabRange))
                 {
-                    if (hit.collider.gameObject.GetComponent<Rigidbody>())
+                    if (hit.collider.gameObject.GetComponent<Rigidbody>() && !qm.GetQuantum())
                     {
                         grabbedObject = hit.collider.gameObject;
+                        grabbedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                         grabbedObject.transform.SetParent(cam.transform);
                         grabbing = true;

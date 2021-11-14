@@ -37,7 +37,7 @@ public class FinishLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Gate" && !qm.GetQuantum())
+        if (other.tag == "Gate" &&other.gameObject.name == "Gate" && !qm.GetQuantum())
         {
             isNearGate = true;
             textCanvas.gameObject.SetActive(true);
