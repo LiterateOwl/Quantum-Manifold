@@ -2321,6 +2321,7 @@ GameObject:
   - component: {fileID: 1915861667747346627}
   - component: {fileID: 644908024}
   - component: {fileID: 1915861667747346649}
+  - component: {fileID: 1915861667747346650}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2342,6 +2343,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 1317157853}
   textCanvas: {fileID: 700904467}
+--- !u!114 &1915861667747346650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915861667747346648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a368994b29b654bb9642058d980d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: Level 2
+  textCanvas: {fileID: 700904467}
+  quantumManager: {fileID: 886594471}
 --- !u!114 &6689765527030545783
 MonoBehaviour:
   m_ObjectHideFlags: 0
