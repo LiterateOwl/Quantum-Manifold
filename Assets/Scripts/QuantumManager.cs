@@ -15,7 +15,10 @@ public class QuantumManager : MonoBehaviour
     public Texture quantumTex;
 
     public GameObject[] glassWalls;
-    
+
+    public GameObject occhio;
+    public GameObject vfx;
+
     private bool quantum;
 
     public bool GetQuantum()
@@ -26,6 +29,10 @@ public class QuantumManager : MonoBehaviour
     public bool ToggleQuantum()
     {
         quantum = !quantum;
+        occhio.SetActive(!quantum);
+        vfx.SetActive(quantum);
+        GetComponent<MeshRenderer>().enabled = !quantum;
+        GetComponent<MeshCollider>().enabled = !quantum;
         SwitchTextures();
         SwitchMaterials();
         SwitchSkyBox();
