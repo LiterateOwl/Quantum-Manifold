@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
                             if (!copy.GetComponent<PressMultiButton>()) copy.AddComponent<PressMultiButton>();
                             copy.GetComponent<PressMultiButton>().textCanvas = GetComponent<PressMultiButton>().textCanvas;
                         }
+                        copy.AddComponent<FinishLevel>();
                         copy.GetComponent<PlayerController>().quantumManager = quantumManager;
                         copy.GetComponent<PlayerController>().SetIsTheCopy(true);
                         copy.GetComponent<PlayerController>().copy = gameObject;
