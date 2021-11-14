@@ -1464,6 +1464,7 @@ MonoBehaviour:
   quantumTex: {fileID: 2800000, guid: 398726ee548c1e945bc0d44523d9544d, type: 3}
   glassWalls:
   - {fileID: 1317157853}
+  movableObjects: []
   occhio: {fileID: 169580079}
   vfx: {fileID: 269189243}
 --- !u!1 &954154079
@@ -2466,8 +2467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eea8d2596dccbe469d35ed31a50a4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 300
-  speed: 20
+  jumpForce: 250
+  speed: 10
   mouseSensX: 7
   mouseSensY: 7
   grabRange: 5

@@ -390,8 +390,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269745688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 30}
+  m_LocalPosition: {x: -5, y: 2, z: 5}
+  m_LocalScale: {x: 1, y: 5, z: 45}
   m_Children: []
   m_Father: {fileID: 1002675988}
   m_RootOrder: 0
@@ -486,7 +486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310558345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 30.14}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1009,8 +1009,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663020811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 2}
-  m_LocalScale: {x: 0.4, y: 1, z: 0.6}
+  m_LocalPosition: {x: 0, y: -0.05, z: -4}
+  m_LocalScale: {x: 0.4, y: 1, z: 1.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   quantumTex: {fileID: 2800000, guid: 398726ee548c1e945bc0d44523d9544d, type: 3}
   glassWalls:
   - {fileID: 1317157853}
+  movableObjects: []
   occhio: {fileID: 169580079}
   vfx: {fileID: 1021587325}
 --- !u!1 &926972921
@@ -1769,7 +1770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230814693}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2, z: 15}
+  m_LocalPosition: {x: 0, y: 2, z: 25.14}
   m_LocalScale: {x: 1, y: 5, z: 10}
   m_Children: []
   m_Father: {fileID: 1002675988}
@@ -2037,7 +2038,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358566925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.48, z: 14.52}
+  m_LocalPosition: {x: 0, y: 1.48, z: 24.66}
   m_LocalScale: {x: 3, y: 3, z: 0.1}
   m_Children:
   - {fileID: 525757492}
@@ -2241,8 +2242,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900901451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 30}
+  m_LocalPosition: {x: 5, y: 2, z: 5}
+  m_LocalScale: {x: 1, y: 5, z: 45}
   m_Children: []
   m_Father: {fileID: 1002675988}
   m_RootOrder: 1
@@ -2504,8 +2505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eea8d2596dccbe469d35ed31a50a4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 300
-  speed: 20
+  jumpForce: 250
+  speed: 10
   mouseSensX: 7
   mouseSensY: 7
   grabRange: 5
